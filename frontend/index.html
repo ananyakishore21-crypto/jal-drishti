@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jal Drishti — ghats that need attention before Durga visarjan</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Jal Drishti <span lang="hi">जल दृष्टि</span></h1>
+      <p>Which immersion ghats need attention before Durga visarjan. Built from MPPCB test reports 2023–2025 and
+        compared with CPCB Class B (organised outdoor bathing) limits.</p>
+    </div>
+    <div class="countdown" id="countdown" aria-live="polite"></div>
+  </header>
+
+  <div id="banner" class="banner" role="alert" hidden></div>
+
+  <section class="filters" aria-label="Filters">
+    <label>Festival
+      <select id="f-festival">
+        <option value="Durga" selected>Durga</option>
+        <option value="Ganesh">Ganesh</option>
+        <option value="">Both festivals</option>
+      </select>
+    </label>
+    <fieldset>
+      <legend>Years</legend>
+      <div id="f-years" class="years"></div>
+    </fieldset>
+    <label>Phase
+      <select id="f-phase">
+        <option value="" selected>All phases</option>
+        <option value="during,after">During + 1 week after immersion</option>
+        <option value="pre">Before immersion</option>
+        <option value="during">During immersion</option>
+        <option value="after">1 week after immersion</option>
+      </select>
+    </label>
+    <span id="loading" class="loading" hidden>Loading…</span>
+  </section>
+
+  <main>
+    <section class="panel" aria-labelledby="summary-h">
+      <h2 id="summary-h">At a glance</h2>
+      <div id="summary-cards" class="cards"></div>
+      <ul id="headlines" class="headlines"></ul>
+    </section>
+
+    <div class="layout">
+      <section class="panel" aria-labelledby="rank-h">
+        <h2 id="rank-h">Ghats ranked by readings outside CPCB Class B</h2>
+        <p class="muted" id="rank-scope"></p>
+        <p class="muted small">Ranked by how often and how far dissolved oxygen, BOD and pH fall outside the limits.
+          Missing readings are never counted as clean.</p>
+        <div id="rankings"></div>
+        <details id="method" class="method"></details>
+      </section>
+
+      <aside class="panel brief" aria-labelledby="brief-h">
+        <h2 id="brief-h">Officer brief <span lang="hi">अधिकारी सारांश</span></h2>
+        <div class="brief-controls">
+          <div class="tabs" role="tablist" aria-label="Brief language">
+            <button class="tab" role="tab" data-lang="en" aria-selected="true">English</button>
+            <button class="tab" role="tab" data-lang="hi" aria-selected="false" lang="hi">हिंदी</button>
+          </div>
+          <label>Ghats listed
+            <select id="brief-top">
+              <option value="3" selected>3</option>
+              <option value="5">5</option>
+              <option value="7">7</option>
+            </select>
+          </label>
+        </div>
+        <h3 id="brief-title" class="brief-title"></h3>
+        <div id="brief-body" class="brief-body"></div>
+        <div class="brief-actions">
+          <button id="copy-brief" class="btn">Copy</button>
+          <button id="copy-both" class="btn-secondary">Copy EN + HI</button>
+          <button id="download-brief" class="btn-secondary">Download .txt</button>
+        </div>
+        <p class="muted small">The Hindi text is generated from templates. Please have it checked before forwarding.</p>
+      </aside>
+    </div>
+
+    <section class="panel" aria-labelledby="cov-h">
+      <h2 id="cov-h">Data coverage</h2>
+      <p class="muted small">Readings reported out of readings expected, for all 13 parameters, in each test round.
+        "No table" means the report has no table for that ghat in that round.</p>
+      <div id="coverage"></div>
+      <div class="legend">
+        <span class="chip cov-complete">Complete</span>
+        <span class="chip cov-partial">Some readings missing</span>
+        <span class="chip cov-none_reported">Nothing reported</span>
+        <span class="chip cov-no_table_in_report">No table in report</span>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="cav-h">
+      <h2 id="cav-h">What this data does not tell you</h2>
+      <ul id="caveats" class="caveats"></ul>
+    </section>
+  </main>
+
+  <dialog id="ghat-dialog" aria-labelledby="ghat-title">
+    <div class="dialog-head">
+      <h2 id="ghat-title">Ghat readings</h2>
+      <button class="btn-close" id="ghat-close" aria-label="Close">×</button>
+    </div>
+    <div id="ghat-body"></div>
+  </dialog>
+
+  <footer>
+    Data: MPPCB Ganesh and Durga visarjan reports 2023, 2024 and 2025; CPCB water-quality criteria.
+    Source page numbers are PDF pages of that year's report. Compares readings with limits only;
+    it does not assess health effects.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
