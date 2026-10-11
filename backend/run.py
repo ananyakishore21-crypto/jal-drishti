@@ -6,4 +6,4 @@ import uvicorn
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "8000"))
     print(f"Jal Drishti running at http://:{port}/  (API docs at /docs). Press Ctrl+C to stop.")
-    uvicorn.run("jal_drishti.api:app", host="0.0.0.0", port=port)
+    uvicorn.run("jal_drishti.api:app", host="0.0.0.0", port=1000)
